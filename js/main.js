@@ -98,16 +98,24 @@ function applyContent(content, lang){
 }
 
 /* ---------- Preloader ---------- */
-window.addEventListener('load', () => {
+/* Safety net: never let a slow/blocked external resource (fonts, CDN, images)
+   trap the site behind the loading screen. Runs on 'load' OR after a max
+   timeout, whichever comes first. */
+let preloaderDone = false;
+function finishPreloading(){
+  if (preloaderDone) return;
+  preloaderDone = true;
   const bar = document.querySelector('.preloader-bar span');
   const pre = document.getElementById('preloader');
-  gsap.to(bar, { width:'100%', duration:.9, ease:'power2.inOut', onComplete:()=>{
+  gsap.to(bar, { width:'100%', duration:.6, ease:'power2.inOut', onComplete:()=>{
     setTimeout(()=>{
       pre.classList.add('done');
       startHeroIntro();
-    }, 150);
+    }, 120);
   }});
-});
+}
+window.addEventListener('load', finishPreloading);
+setTimeout(finishPreloading, 2500);
 
 /* ---------- Nav scroll state + burger ---------- */
 const nav = document.getElementById('nav');
