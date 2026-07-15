@@ -57,8 +57,7 @@ collections:
                   - { label: "Subtítulo", name: "subtitle", widget: "text" }
                   - { label: "Texto botón principal", name: "ctaPrimary", widget: "string" }
                   - { label: "Texto botón secundario", name: "ctaSecondary", widget: "string" }
-                  - { label: "Video de fondo", name: "videoUrl", widget: "file", hint: "Sube un video .mp4 o pega una URL" }
-                  - { label: "Imagen de respaldo (poster / mobile)", name: "posterUrl", widget: "image" }
+                  - { label: "Imagen de fondo (Hero)", name: "posterUrl", widget: "image" }
                   - { label: "Palabras de la cinta animada", name: "tags", widget: "list" }
 
               - label: "Estadísticas (franja de números)"
